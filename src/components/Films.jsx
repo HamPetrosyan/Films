@@ -26,8 +26,9 @@ const Films = () => {
   };
 
   const handleTypeChange = (e) => {
-    setTypeFilter(e.target.value);
-    dispatch(fetchFilmsByType("movie"));
+    const selectedType = e.target.value;
+    setTypeFilter(selectedType);
+    dispatch(fetchFilmsByType(selectedType));
   };
 
   return (
