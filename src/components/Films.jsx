@@ -39,55 +39,64 @@ const Films = () => {
 
   return (
     <div className="films-container">
-      <div className="search-bar">
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <button onClick={search}>Search</button>
-      </div>
-      <div className="radio-buttons">
-        <input
-          name="type"
-          type="radio"
-          id="movie"
-          value="movie"
-          checked={typeFilter === "movie"}
-          onChange={handleTypeChange}
-        />
-        <label htmlFor="movie">Movies</label>
+      <header>
+        <h1>HamFilm</h1>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button onClick={search}>Search</button>
+        </div>
+        <div className="radio-buttons">
+          <input
+            name="type"
+            type="radio"
+            id="movie"
+            value="movie"
+            checked={typeFilter === "movie"}
+            onChange={handleTypeChange}
+            className={typeFilter === "movie" ? "selected" : ""}
+          />
+          <label htmlFor="movie">Movies</label>
 
-        <input
-          name="type"
-          type="radio"
-          id="series"
-          value="series"
-          checked={typeFilter === "series"}
-          onChange={handleTypeChange}
-        />
-        <label htmlFor="series">Series</label>
+          <input
+            name="type"
+            type="radio"
+            id="series"
+            value="series"
+            checked={typeFilter === "series"}
+            onChange={handleTypeChange}
+            className={typeFilter === "series" ? "selected" : ""}
+          />
+          <label htmlFor="series">Series</label>
 
-        <input
-          name="type"
-          type="radio"
-          id="episode"
-          value="episode"
-          checked={typeFilter === "episode"}
-          onChange={handleTypeChange}
-        />
-        <label htmlFor="episode">Episodes</label>
+          <input
+            name="type"
+            type="radio"
+            id="episode"
+            value="episode"
+            checked={typeFilter === "episode"}
+            onChange={handleTypeChange}
+            className={typeFilter === "episode" ? "selected" : ""}
+          />
+          <label htmlFor="episode">Episodes</label>
 
-        <input
-          name="type"
-          type="radio"
-          id="game"
-          value="game"
-          checked={typeFilter === "game"}
-          onChange={handleTypeChange}
-        />
-        <label htmlFor="game">Games</label>
-      </div>
+          <input
+            name="type"
+            type="radio"
+            id="game"
+            value="game"
+            checked={typeFilter === "game"}
+            onChange={handleTypeChange}
+            className={typeFilter === "game" ? "selected" : ""}
+          />
+          <label htmlFor="game">Games</label>
+        </div>
+      </header>
+
       <div
         className="films"
         style={{
@@ -115,7 +124,7 @@ const Films = () => {
           <p style={{ marginBottom: "50%" }}>No films found</p>
         )}
       </div>
-      <div>
+      <div className="pagination">
         <button
           disabled={currentPage === 1}
           onClick={() => handlePageChange(currentPage - 1)}
