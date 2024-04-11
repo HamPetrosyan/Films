@@ -11,12 +11,12 @@ const Counter = () => {
 
   const handleDecrement = () => {
     dispatch(decrement());
-    dispatch(fetchFilms());
+    dispatch(fetchFilms({}));
   };
 
   const handleIncrement = () => {
     dispatch(increment());
-    dispatch(fetchFilms());
+    dispatch(fetchFilms({}));
   };
 
   return (

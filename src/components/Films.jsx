@@ -1,44 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchFilms, fetchFilmsByType } from "../reduxStore/filmsSlice";
+import { fetchFilms } from "../reduxStore/filmsSlice";
 
 const Films = () => {
   const films = useSelector((state) => state.films.films);
   const dispatch = useDispatch();
 
   const [value, setValue] = useState("");
-  const [typeFilter, setTypeFilter] = useState("movie");
+  const [typeFilter, setTypeFilter] = useState("");
 
   useEffect(() => {
-    dispatch(fetchFilms());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchFilmsByType("movie"));
+    dispatch(fetchFilms({}));
   }, [dispatch]);
 
   const search = () => {
-    dispatch(fetchFilms());
-  };
-
-  const handleSearch = (e) => {
-    setValue(e.target.value);
+    if (value.trim() !== "") {
+      dispatch(fetchFilms({ filmName: value.trim(), type: typeFilter }));
+    }
   };
 
   const handleTypeChange = (e) => {
     const selectedType = e.target.value;
     setTypeFilter(selectedType);
-    dispatch(fetchFilmsByType(selectedType));
+    dispatch(fetchFilms({ type: selectedType }));
   };
 
   return (
     <>
       <div>
-        <input type="text" value={value} onChange={handleSearch} />
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
         <button onClick={search}>Search</button>
       </div>
       <div>
         <input
+          name="type"
           type="radio"
           id="movie"
           value="movie"
@@ -48,6 +47,7 @@ const Films = () => {
         <label htmlFor="movie">Movies</label>
 
         <input
+          name="type"
           type="radio"
           id="series"
           value="series"
@@ -57,6 +57,7 @@ const Films = () => {
         <label htmlFor="series">Series</label>
 
         <input
+          name="type"
           type="radio"
           id="episode"
           value="episode"
