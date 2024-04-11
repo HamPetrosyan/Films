@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFilms } from "../reduxStore/filmsSlice";
+import "./Films.css";
 
 const Films = () => {
   const films = useSelector((state) => state.films.films);
@@ -8,26 +9,37 @@ const Films = () => {
 
   const [value, setValue] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const [lastSearchedFilm, setLastSearchedFilm] = useState("Avatar");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchFilms({}));
-  }, [dispatch]);
+    dispatch(
+      fetchFilms({
+        filmName: lastSearchedFilm,
+        type: typeFilter,
+        page: currentPage,
+      })
+    );
+  }, [dispatch, lastSearchedFilm, typeFilter, currentPage]);
 
   const search = () => {
     if (value.trim() !== "") {
-      dispatch(fetchFilms({ filmName: value.trim(), type: typeFilter }));
+      setLastSearchedFilm(value.trim());
     }
   };
 
   const handleTypeChange = (e) => {
     const selectedType = e.target.value;
     setTypeFilter(selectedType);
-    dispatch(fetchFilms({ type: selectedType }));
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
-    <>
-      <div>
+    <div className="films-container">
+      <div className="search-bar">
         <input
           type="text"
           value={value}
@@ -35,7 +47,7 @@ const Films = () => {
         />
         <button onClick={search}>Search</button>
       </div>
-      <div>
+      <div className="radio-buttons">
         <input
           name="type"
           type="radio"
@@ -77,6 +89,7 @@ const Films = () => {
         <label htmlFor="game">Games</label>
       </div>
       <div
+        className="films"
         style={{
           display: "flex",
           justifyContent: "center",
@@ -89,16 +102,29 @@ const Films = () => {
           films.map((film) => (
             <div style={{ width: 300 }} key={film.imdbID}>
               <h2>{film.Title}</h2>
-              <img src={film.Poster} alt={film.Title} />
+              <img
+                src={film.Poster}
+                alt={film.Title}
+                style={{ maxWidth: "300px", maxHeight: "400px" }}
+              />
               <p>{film.Year}</p>
               <p>{film.Type}</p>
             </div>
           ))
         ) : (
-          <p>No films found</p>
+          <p style={{ marginBottom: "50%" }}>No films found</p>
         )}
       </div>
-    </>
+      <div>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          Previous
+        </button>
+        <button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+      </div>
+    </div>
   );
 };
 

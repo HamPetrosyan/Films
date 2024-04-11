@@ -3,11 +3,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchFilms = createAsyncThunk(
   "films/fetchFilms",
   async function (
-    { filmName = "Avatar", type = "" },
-    { rejectWithValue, dispatch, getState }
+    { filmName = "", type = "", page = 1 },
+    { rejectWithValue, dispatch }
   ) {
     try {
-      const page = getState().counter.value;
       const response = await fetch(
         `http://www.omdbapi.com/?i=tt3896198&apikey=1abc45aa&s=${filmName}&type=${type}&page=${page}`
       );

@@ -4,7 +4,6 @@ import { Films } from "./components/Films";
 function App() {
   return (
     <>
-      <Counter />
       <Films />
     </>
   );

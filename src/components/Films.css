@@ -1,0 +1,27 @@
+.films-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    max-width: 1280px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+
+.radio-buttons {
+    margin-top: 10px;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    margin: 0 5px;
+}
