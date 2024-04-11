@@ -65,6 +65,16 @@ const Films = () => {
           onChange={handleTypeChange}
         />
         <label htmlFor="episode">Episodes</label>
+
+        <input
+          name="type"
+          type="radio"
+          id="game"
+          value="game"
+          checked={typeFilter === "game"}
+          onChange={handleTypeChange}
+        />
+        <label htmlFor="game">Games</label>
       </div>
       <div
         style={{
