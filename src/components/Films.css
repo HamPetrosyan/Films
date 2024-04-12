@@ -37,7 +37,7 @@ h1 {
     }
 
     input:focus {
-        box-shadow: 0 0 5px white;
+        box-shadow: 0 0 10px white;
     }
 
     input::placeholder {
@@ -46,7 +46,7 @@ h1 {
 
     input:hover {
         background-color: rgb(244, 232, 255);
-        box-shadow: 0 0 5px white;
+        box-shadow: 0 0 10px white;
     }
 
     button {
@@ -63,7 +63,7 @@ h1 {
     button:hover {
         background-color: rgb(132, 0, 255);
         color: white;
-        box-shadow: 0 0 5px white;
+        box-shadow: 0 0 10px white;
     }
 }
 
