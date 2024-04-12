@@ -50,7 +50,9 @@ const Films = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button onClick={search}>Search</button>
+          <button onClick={search} disabled={!films}>
+            Search
+          </button>
         </div>
         <div className="radio-buttons">
           <input
@@ -61,6 +63,7 @@ const Films = () => {
             checked={typeFilter === "movie"}
             onChange={handleTypeChange}
             className={typeFilter === "movie" ? "selected" : ""}
+            disabled={!films}
           />
           <label htmlFor="movie">Movies</label>
 
@@ -72,6 +75,7 @@ const Films = () => {
             checked={typeFilter === "series"}
             onChange={handleTypeChange}
             className={typeFilter === "series" ? "selected" : ""}
+            disabled={!films}
           />
           <label htmlFor="series">Series</label>
 
@@ -83,6 +87,7 @@ const Films = () => {
             checked={typeFilter === "episode"}
             onChange={handleTypeChange}
             className={typeFilter === "episode" ? "selected" : ""}
+            disabled={!films}
           />
           <label htmlFor="episode">Episodes</label>
 
@@ -94,6 +99,7 @@ const Films = () => {
             checked={typeFilter === "game"}
             onChange={handleTypeChange}
             className={typeFilter === "game" ? "selected" : ""}
+            disabled={!films}
           />
           <label htmlFor="game">Games</label>
         </div>
@@ -113,30 +119,17 @@ const Films = () => {
           films.map((film) => (
             <div style={{ width: 300 }} key={film.imdbID}>
               <h2>{film.Title}</h2>
-              <img
-                src={film.Poster}
-                alt={film.Title}
-                style={{
-                  marginTop: "10px",
-                  marginBottom: "5px",
-                  maxWidth: "300px",
-                  maxHeight: "400px",
-                  transition: "box-shadow 0.3s",
-                  boxShadow: "0 0 10px white",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.boxShadow = "0 0 15px 5px white";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.boxShadow = "0 0 10px white";
-                }}
-              />
+              <img src={film.Poster} alt={film.Title} />
               <p>{film.Year}</p>
               <p>{film.Type}</p>
             </div>
           ))
         ) : (
-          <p style={{ marginBottom: "50%" }}>No films found</p>
+          <p className="no-results">
+            <span style={{ textDecoration: "underline" }}>Information:</span> We
+            Couldn't Find Anything, try searching for another film.{" "}
+            <i className="far fa-smile"></i>
+          </p>
         )}
       </div>
       <div className="pagination">
