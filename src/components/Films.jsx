@@ -50,9 +50,7 @@ const Films = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-          <button onClick={search} disabled={!films}>
-            Search
-          </button>
+          <button onClick={search}>Search</button>
         </div>
         <div className="radio-buttons">
           <input
@@ -63,7 +61,6 @@ const Films = () => {
             checked={typeFilter === "movie"}
             onChange={handleTypeChange}
             className={typeFilter === "movie" ? "selected" : ""}
-            disabled={!films}
           />
           <label htmlFor="movie">Movies</label>
 
@@ -75,7 +72,6 @@ const Films = () => {
             checked={typeFilter === "series"}
             onChange={handleTypeChange}
             className={typeFilter === "series" ? "selected" : ""}
-            disabled={!films}
           />
           <label htmlFor="series">Series</label>
 
@@ -87,7 +83,6 @@ const Films = () => {
             checked={typeFilter === "episode"}
             onChange={handleTypeChange}
             className={typeFilter === "episode" ? "selected" : ""}
-            disabled={!films}
           />
           <label htmlFor="episode">Episodes</label>
 
@@ -99,7 +94,6 @@ const Films = () => {
             checked={typeFilter === "game"}
             onChange={handleTypeChange}
             className={typeFilter === "game" ? "selected" : ""}
-            disabled={!films}
           />
           <label htmlFor="game">Games</label>
         </div>
