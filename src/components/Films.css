@@ -11,12 +11,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid blueviolet;
+    border-bottom: 2px solid rgb(132, 0, 255);
     padding: 10px;
 }
 
 h1 {
     cursor: default;
+    font-variant: small-caps;
 }
 
 .search-bar {
@@ -25,6 +26,7 @@ h1 {
     text-align: center;
 
     input {
+        color: rgb(132, 0, 255);
         width: 200px;
         padding: 10px;
         border-top-left-radius: 8px;
@@ -38,7 +40,12 @@ h1 {
     }
 
     input::placeholder {
-        color: rgba(136, 0, 255, 50%);
+        color: rgba(136, 0, 255, 0.654);
+    }
+
+    input:hover {
+        background-color: rgb(240, 223, 255);
+        box-shadow: -2px 0 8px white;
     }
 
     button {
@@ -48,15 +55,14 @@ h1 {
         border-bottom-right-radius: 8px;
         border: transparent;
         background-color: rgb(240, 223, 255);
-        color: blueviolet;
+        color: rgb(132, 0, 255);
     }
 
-    button:focus {
-        background-color: rgb(136, 0, 255);
+    button:hover {
+        background-color: rgb(132, 0, 255);
         color: white;
         box-shadow: -2px 0 8px white;
     }
-
 }
 
 .radio-buttons {
@@ -70,7 +76,7 @@ h1 {
     }
 
     input[type="radio"].selected+label {
-        border-bottom: 2px solid blueviolet;
+        border-bottom: 2px solid rgb(132, 0, 255);
     }
 
     label {
@@ -80,8 +86,8 @@ h1 {
     }
 
     label:hover {
-        transition: 0.1s ease;
-        box-shadow: 0px 4px 10px rgba(136, 0, 255, 0.5);
+        transition: 0.2s ease;
+        box-shadow: 0 0 20px rgba(136, 0, 255, 0.5);
     }
 }
 
@@ -107,22 +113,26 @@ h1 {
 
     button {
         cursor: pointer;
-        margin: 0 5px;
+        margin: 0 5px 5px;
         padding: 10px 20px;
         border-radius: 8px;
         border: none;
         background-color: rgb(240, 223, 255);
-        color: blueviolet;
+        color: rgb(132, 0, 255);
     }
 
     button:hover {
         transition: 0.2s ease;
-        background-color: rgb(209, 156, 255);
+        background-color: rgb(136, 0, 255);
         color: white;
+        box-shadow: 0 0 8px white;
     }
 
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+        background-color: rgb(240, 223, 255);
+        color: rgb(132, 0, 255);
+        box-shadow: none;
     }
 }

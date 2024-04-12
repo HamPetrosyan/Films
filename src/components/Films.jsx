@@ -40,7 +40,9 @@ const Films = () => {
   return (
     <div className="films-container">
       <header>
-        <h1>HamFilm</h1>
+        <h1>
+          Ham<span style={{ color: "rgb(132, 0, 255)" }}>Film</span>
+        </h1>
         <div className="search-bar">
           <input
             type="text"
@@ -114,7 +116,20 @@ const Films = () => {
               <img
                 src={film.Poster}
                 alt={film.Title}
-                style={{ maxWidth: "300px", maxHeight: "400px" }}
+                style={{
+                  marginTop: "10px",
+                  marginBottom: "5px",
+                  maxWidth: "300px",
+                  maxHeight: "400px",
+                  transition: "box-shadow 0.3s",
+                  boxShadow: "0 0 10px white",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.boxShadow = "0 0 15px 5px white";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.boxShadow = "0 0 10px white";
+                }}
               />
               <p>{film.Year}</p>
               <p>{film.Type}</p>
