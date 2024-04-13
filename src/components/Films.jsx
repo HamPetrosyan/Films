@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFilms } from "../reduxStore/filmsSlice";
 import "./Films.css";
@@ -41,8 +41,9 @@ const Films = () => {
     <div className="films-container">
       <header>
         <h1>
-          Ham<span style={{ color: "rgb(132, 0, 255)" }}>Film</span>
+          Ham<span className="name">Film</span>
         </h1>
+
         <div className="search-bar">
           <input
             type="text"
@@ -52,6 +53,7 @@ const Films = () => {
           />
           <button onClick={search}>Search</button>
         </div>
+
         <div className="radio-buttons">
           <input
             name="type"
@@ -99,19 +101,10 @@ const Films = () => {
         </div>
       </header>
 
-      <div
-        className="films"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "1rem",
-        }}
-      >
+      <div className="films">
         {films ? (
           films.map((film) => (
-            <div style={{ width: 300 }} key={film.imdbID}>
+            <div className="film-details" key={film.imdbID}>
               <h2>{film.Title}</h2>
               <img src={film.Poster} alt={film.Title} />
               <p>{film.Year}</p>
@@ -120,12 +113,13 @@ const Films = () => {
           ))
         ) : (
           <p className="no-results">
-            <span style={{ textDecoration: "underline" }}>Information:</span> We
-            Couldn't Find Anything, try searching for another film.{" "}
+            <span className="info">Information:</span> We Couldn't Find
+            Anything, try searching for another film.{" "}
             <i className="far fa-smile"></i>
           </p>
         )}
       </div>
+
       <div className="pagination">
         <button
           disabled={currentPage === 1}
