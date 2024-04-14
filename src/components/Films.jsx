@@ -40,8 +40,8 @@ const Films = () => {
   return (
     <div className="films-container">
       <header>
-        <h1>
-          Ham<span className="name">Film</span>
+        <h1 className="HamFilms">
+          Ham<span>Film</span>
         </h1>
 
         <div className="search-bar">
