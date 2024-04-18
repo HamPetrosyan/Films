@@ -122,7 +122,7 @@ h1 {
         max-height: 400px;
         transition: box-shadow 0.3s;
         box-shadow: 0 0 10px rgb(215, 215, 215);
-        border-radius: 8pxç;
+        border-radius: 8px;
     }
 
     img:hover {
